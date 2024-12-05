@@ -1,0 +1,532 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #ffd700;       /* Golden Color */
+    --secondary-color: orange;
+    --background-color: #101010;    /* Light black color */
+    --text-color: white;
+    --hover-color: grey;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color); /* Making the bg light black */
+    color: var(--primary-color);               /* Making the text golden */
+    overflow-x: hidden;
+}
+
+/* Styling the header */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0 20px;
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--secondary-color);    /* Makes the nav orange colored */
+    font-size: 1.3rem;
+    font-weight: bold;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: var(--hover-color);      /* Hover color grey on the nav links */
+}
+
+nav ul li a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Active */
+.active {
+    color: white;
+}
+
+.active::after {
+    width: 100%;
+}
+
+/* Social icons */
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    font-size: 2.1rem;
+    color: orange;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--hover-color);
+}
+
+/* Making the header responsive */
+@media screen and (max-width: 768px) {
+    .social-icons {
+        display: none;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    .logo {
+        width: 60px;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    nav {
+        padding: 0 10px;
+    }
+
+    .logo {
+        width: 50px;
+    }
+
+    nav ul li a {
+        font-size: 0.8rem;
+    }
+}
+
+/* Hero section */
+#hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-size: cover;
+}
+
+#hero::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/hero.jpeg);
+    background-size: cover;
+    background-position: center center;
+    filter: brightness(50%);
+}
+
+#hero_content {
+    position: absolute;
+}
+
+#hero_content h1 {
+    color: var(--text-color);
+    font-size: 2.8rem;
+    text-shadow: 2px 2px 2px #000;
+}
+
+#hero_content h2 {
+    color: var(--text-color);
+    font-size: 2rem;
+    font-family: cursive;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+}
+
+#hero_content a {
+    color: var(--text-color);
+    padding: 3px 20px;
+    border: 1px solid orange;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 1.5rem;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+#hero_content a:hover {
+    background: var(--secondary-color);;
+}
+
+@media screen and (max-width: 768px) {
+    #hero_content h1 {
+        font-size: 2rem;
+    }
+    #hero_content h2 {
+        font-size: 1.5rem;
+    }
+    #hero_content a {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #hero_content h1 {
+        font-size: 1.5rem;
+    }
+    #hero_content h2 {
+        font-size: 1.2rem;
+    }
+    #hero_content a {
+        font-size: 1rem;
+        padding: 6px 12px;
+    }
+}
+
+/* Delivery picture */
+.main-index {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.delivery {
+    flex: 1 1 calc(50%); /* Each image takes 50% minus the gap */
+    max-width: calc(50%); /* Ensures proper spacing */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: cover; /* Ensures no distortion */
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+    .delivery {
+        flex: 1 1 100%; /* Each image takes full width on smaller screens */
+        max-width: 100%;
+    }
+
+}
+
+
+/* Menu Section Styling */
+.menu-section {
+    margin: 120px auto; /* Push below the header */
+    padding: 20px;
+    text-align: center;
+}
+
+.beef-header, .chicken-header, .sides-header {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.beef-header {
+    color: red;
+}
+
+.chicken-header {
+    color: green;
+}
+
+.sides-header {
+    color: blue;
+}
+
+.menu-items {
+    display: flex; /* Makes the items align horizontally */
+    gap: 20px; /* Space between the items */
+    justify-content: space-around; /* Center the items horizontally */
+    flex-wrap: wrap; /* Wrap items to the next line if necessary for smaller screens */
+}
+
+.menu-item {
+    flex: 1 1 calc(30% - 20px);
+    color: var(--text-color); /* Text color */
+    padding: 20px; /* Space inside the box */
+    margin: 10px; /* Space around the box */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Prevents content overflow when zooming */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    text-align: center; /* Center align text */
+    width: 350px; /* Fixed width for consistent sizing */
+}
+
+.menu-item:hover {
+    transform: scale(1.1); /* Zoom effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Add shadow effect */
+}
+
+.menu-item img {
+    width: 100%; /* Ensure images fit inside the box */
+    border-radius: 10px; /* Matches the box corners */
+    margin-bottom: 10px; /* Space between image and text */
+}
+
+.menu-item h3 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+    color: var(--primary-color);
+}
+
+.menu-item p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+;
+}
+
+
+@media (max-width: 768px) {
+    .menu-item {
+        flex: 1 1 100%;
+        width: 100%; /* Make items full-width on smaller screens */
+    }
+
+    .menu-items {
+        flex-direction: column;
+        gap: 10px; /* Reduce gap on smaller screens */
+    }
+}
+
+/* download menu button styling */
+.full-menu {
+    display: inline-block;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.full-menu:hover {
+    background-color: rgb(230, 161, 74);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+
+/* Contact Us Section */
+.contact-us {
+    max-width: 600px;
+    margin: 100px auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.contact-us h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px; /* Changed to 20 from 10 */
+}
+
+.contact-us p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Contact Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 50px; /* Extra */
+}
+
+.contact-form label {
+    text-align: left;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    background: #333;
+    color: var(--text-color);
+}
+
+.contact-form button {
+    background: var(--secondary-color);
+    color: var(--text-color);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: rgb(230, 161, 74);
+}
+
+/* Location and Timing Section */
+.location-timing {
+    position: relative;
+    width: 98vw; /* Ensures it spans the full width of the viewport */
+    left: 50%; /* Aligns it correctly */
+    transform: translateX(-50%); /* Centers the section horizontally */
+    background-color: var(--secondary-color);
+    color: black;
+    padding: 50px 20px; /* Padding for internal spacing */
+    text-align: left;
+    box-sizing: border-box; /* Includes padding in the width calculation */
+    border-radius: 20px;
+}
+
+.location-timing h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 3px solid black; /* Thin line below the header */
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    flex-wrap: wrap; /* Stacks elements if screen width is too small */
+}
+
+.location, .timing, .details {
+    flex: 1;
+    min-width: 300px; /* Ensures readability on small screens */
+}
+
+.location h3, .timing h3, .details h3 {
+    font-size: 2rem; /* Larger font size for section headings */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.location p, .timing p, .details p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.details a {
+    color: black;
+    text-decoration: none;
+}
+
+.details a:hover {
+    color: red;
+}
+
+@media screen and (max-width: 768px) {
+    .location-timing {
+        text-align: center;
+    }
+
+    .info {
+        flex-direction: column; /* Stacks elements vertically */
+        gap: 20px;
+    }
+
+    .location, .timing, .details {
+        text-align: left;
+    }
+
+    .location p, .timing p, .details p {
+        font-size: 1rem;
+    }
+}
+
+
+/* About styling */
+.about-main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    margin: 120px auto;
+}
+
+.about-title {
+    font-size: 3rem; /* Increased font size for the title */
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 10px solid var(--secondary-color);
+    padding: 10px;
+}
+
+.about-text {
+    font-size: 1.5rem; /* Increased font size for the paragraph */
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.about-image {
+    flex: 1;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 1100px) {
+    .about-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image {
+        margin: 20px auto;
+    }
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--text-color);
+    font-size: 1em;
+}
